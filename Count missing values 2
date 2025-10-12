@@ -1,0 +1,3 @@
+-- Count the number of null values in the industry column
+SELECT count(*) - count(industry) AS missing
+  FROM fortune500;
