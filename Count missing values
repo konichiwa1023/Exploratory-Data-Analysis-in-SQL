@@ -1,0 +1,3 @@
+-- Count the number of null values in the ticker column
+SELECT count(*) - count(ticker) AS missing
+    FROM fortune500;
