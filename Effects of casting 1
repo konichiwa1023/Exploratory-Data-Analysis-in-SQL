@@ -1,0 +1,5 @@
+-- Select the original value
+SELECT profits_change, 
+       -- Cast profits_change
+       CAST(profits_change AS INTEGER) AS profits_change_int
+  FROM fortune500;
