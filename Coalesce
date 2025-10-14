@@ -1,0 +1,10 @@
+-- Use coalesce
+SELECT COALESCE(industry, sector, 'Unknown') AS industry2,
+       COUNT(*) AS count
+  FROM fortune500
+-- Group by what? (What are you counting by?)
+ GROUP BY industry2
+-- Order results to see most common first
+ ORDER BY count DESC
+-- Limit results to get just the one value you want
+ LIMIT 1;
