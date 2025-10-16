@@ -1,0 +1,6 @@
+-- Select min, avg, max, and stddev of fortune500 profits
+SELECT MIN(profits),
+       AVG(profits),
+       MAX(profits),
+       STDDEV(profits)
+  FROM fortune500;
