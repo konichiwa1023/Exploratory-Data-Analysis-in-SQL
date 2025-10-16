@@ -1,0 +1,8 @@
+SELECT sector,
+       min(profits),
+       avg(profits),
+       max(profits),
+       stddev(profits)
+  FROM fortune500
+GROUP BY sector
+ORDER BY avg;
