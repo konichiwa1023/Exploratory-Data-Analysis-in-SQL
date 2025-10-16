@@ -1,0 +1,13 @@
+-- Compute standard deviation of maximum values
+SELECT STDDEV(maxval),
+       -- min
+       MIN(maxval),
+       -- max
+       MAX(maxval),
+       -- avg
+       AVG(maxval)
+  -- Subquery to compute max of question_count by tag
+  FROM (SELECT MAX(question_count) AS maxval
+          FROM stackoverflow
+         -- Compute max by tag
+         GROUP BY tag) AS max_results;
