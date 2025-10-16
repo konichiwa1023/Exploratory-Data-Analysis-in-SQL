@@ -1,0 +1,7 @@
+-- Divide unanswered_count by question_count
+SELECT unanswered_count / question_count::numeric AS computed_pct, 
+       unanswered_pct
+  FROM stackoverflow
+ -- Select rows where question_count is not 0
+ WHERE question_count != 0
+ LIMIT 10;
