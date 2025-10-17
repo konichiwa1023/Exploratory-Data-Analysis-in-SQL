@@ -1,0 +1,4 @@
+SELECT min(question_count), 
+       max(question_count)
+  FROM stackoverflow
+ WHERE tag='dropbox';
