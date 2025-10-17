@@ -1,0 +1,8 @@
+-- Truncate employees to the 10,000s place
+SELECT trunc(employees, -4) AS employee_bin,
+       count(*)
+  FROM fortune500
+ -- Filter for companies with fewer than 100,000 employees
+ WHERE employees < 100000
+ GROUP BY employee_bin
+ ORDER BY employee_bin;
