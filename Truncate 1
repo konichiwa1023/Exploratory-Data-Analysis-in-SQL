@@ -1,0 +1,5 @@
+SELECT trunc(employees, -5) AS employee_bin,
+       count(*)
+  FROM fortune500
+ GROUP BY employee_bin
+ ORDER BY employee_bin;
