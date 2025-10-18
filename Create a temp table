@@ -1,0 +1,21 @@
+-- Code from previous step
+DROP TABLE IF EXISTS profit80;
+
+CREATE TEMP TABLE profit80 AS
+  SELECT sector, 
+         percentile_disc(0.8) WITHIN GROUP (ORDER BY profits) AS pct80
+    FROM fortune500 
+   GROUP BY sector;
+
+-- Select columns, aliasing as needed
+SELECT fortune500.title, 
+       fortune500.sector, 
+       fortune500.profits, 
+       fortune500.profits / profit80.pct80 AS ratio
+-- What tables do you need to join?  
+  FROM fortune500 
+       LEFT JOIN profit80
+-- How are the tables joined?
+       ON fortune500.sector = profit80.sector
+-- What rows do you want to select?
+ WHERE fortune500.profits > profit80.pct80;
