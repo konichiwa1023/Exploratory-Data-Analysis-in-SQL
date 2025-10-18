@@ -1,0 +1,16 @@
+-- To clear table if it already exists; fill in name of temp table
+DROP TABLE IF EXISTS profit80;
+
+-- Create the temporary table
+CREATE TEMP TABLE profit80 AS 
+  -- Select the two columns you need; alias as needed
+  SELECT sector, 
+         percentile_disc(0.8) WITHIN GROUP (ORDER BY profits) AS pct80
+    -- What table are you getting the data from?
+    FROM fortune500
+   -- What do you need to group by?
+   GROUP BY sector;
+   
+-- See what you created: select all columns and rows from the table you created
+SELECT * 
+  FROM profit80;
