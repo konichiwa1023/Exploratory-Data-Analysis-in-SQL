@@ -1,0 +1,4 @@
+-- Select the count of each level of priority
+SELECT priority, count(*)
+  FROM evanston311
+ GROUP BY priority;
