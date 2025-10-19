@@ -1,0 +1,5 @@
+SELECT street, count(*)
+  FROM evanston311
+ GROUP BY street
+ ORDER BY count(*) DESC
+ LIMIT 5;
