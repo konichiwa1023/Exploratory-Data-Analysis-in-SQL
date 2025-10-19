@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS correlations;
+
+-- Create temp table
+CREATE TEMP TABLE correlations AS
+-- Select each correlation
+SELECT 'profits'::varchar AS measure,
+       -- Compute correlations
+       corr(profits, profits) AS profits,
+       corr(profits, profits_change) AS profits_change,
+       corr(profits, revenues_change) AS revenues_change
+  FROM fortune500;
