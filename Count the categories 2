@@ -1,0 +1,6 @@
+-- Find values of zip that appear in at least 100 rows
+-- Also get the count of each value
+SELECT zip, count(*)
+  FROM evanston311
+ GROUP BY zip
+HAVING count(*) >= 100; 
