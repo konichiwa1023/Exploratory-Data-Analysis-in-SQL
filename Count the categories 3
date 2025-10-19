@@ -1,0 +1,6 @@
+-- Find values of source that appear in at least 100 rows
+-- Also get the count of each value
+SELECT source, count(*) 
+  FROM evanston311
+ GROUP BY source
+HAVING count(*) >=100; 
