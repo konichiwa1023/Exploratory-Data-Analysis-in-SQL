@@ -1,0 +1,5 @@
+SELECT DISTINCT street,
+       -- Trim off unwanted characters from street
+       TRIM(BOTH '0123456789#/. ' FROM street) AS cleaned_street
+  FROM evanston311
+ ORDER BY street;
