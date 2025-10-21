@@ -1,0 +1,6 @@
+-- Select categories containing Trash or Garbage
+SELECT category
+  FROM evanston311
+ -- Use LIKE
+ WHERE category LIKE '%Trash%'
+    OR category LIKE '%Garbage%'
