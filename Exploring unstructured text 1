@@ -1,0 +1,6 @@
+-- Count rows
+SELECT count(*)
+  FROM evanston311
+ -- Where description includes trash or garbage
+ WHERE description ILIKE '%trash%' 
+   OR description ILIKE '%garbage%'
