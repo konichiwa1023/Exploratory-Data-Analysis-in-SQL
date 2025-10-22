@@ -1,0 +1,10 @@
+-- Aggregate daily counts by month
+SELECT date_trunc('month', day) AS month,
+       avg(count)
+  -- Subquery to compute daily counts
+  FROM (SELECT date_trunc('day', date_created) AS day,
+               count(*) AS count
+          FROM evanston311
+         GROUP BY day) AS daily_count
+ GROUP BY date_trunc('month', day)
+ ORDER BY month;
