@@ -1,0 +1,8 @@
+-- Get the hour and count requests
+SELECT date_part('hour', date_created) AS hour,
+       count(*)
+  FROM evanston311
+ GROUP BY hour
+ -- Order results to select most common
+ORDER BY count DESC
+ LIMIT 1;
