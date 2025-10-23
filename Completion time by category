@@ -1,0 +1,5 @@
+SELECT category, 
+       avg(date_completed - date_created) AS completion_time
+  FROM evanston311
+ GROUP BY category
+ ORDER BY completion_time DESC;
