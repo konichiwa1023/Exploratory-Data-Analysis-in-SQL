@@ -1,0 +1,26 @@
+-- Code from previous step
+DROP TABLE IF EXISTS recode;
+
+CREATE TEMP TABLE recode AS
+  SELECT DISTINCT category, 
+         rtrim(split_part(category, '-', 1)) AS standardized
+    FROM evanston311;
+  
+UPDATE recode SET standardized = 'Trash Cart' 
+ WHERE standardized LIKE 'Trash%Cart';
+
+UPDATE recode SET standardized = 'Snow Removal' 
+ WHERE standardized LIKE 'Snow%Removal%';
+
+-- Update to group unused/inactive values
+UPDATE recode 
+   SET standardized = 'UNUSED' 
+ WHERE standardized IN ('THIS REQUEST IS INACTIVE...Trash Cart', 
+                        '(DO NOT USE) Water Bill',
+                        'DO NOT USE Trash', 
+                        'NO LONGER IN USE');
+
+-- Examine effect of updates
+SELECT DISTINCT standardized 
+  FROM recode
+ ORDER BY standardized;
