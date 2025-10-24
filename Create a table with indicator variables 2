@@ -1,0 +1,18 @@
+-- To clear table if it already exists
+DROP TABLE IF EXISTS indicators;
+
+-- Create the temp table
+CREATE TEMP TABLE indicators AS
+  SELECT id, 
+         CAST (description LIKE '%@%' AS integer) AS email,
+         CAST (description LIKE '%___-___-____%' AS integer) AS phone 
+    FROM evanston311;
+  
+-- Select the column you'll group by
+SELECT priority, 
+       sum(email)/count(*)::numeric AS email_prop, 
+       sum(phone)/count(*)::numeric AS phone_prop 
+  FROM evanston311
+       LEFT JOIN indicators
+       ON evanston311.id=indicators.id
+ GROUP BY priority;
