@@ -1,0 +1,4 @@
+-- Count requests created on January 31, 2017
+SELECT count(*) 
+  FROM evanston311
+ WHERE date_created::date = '2017-01-31';
