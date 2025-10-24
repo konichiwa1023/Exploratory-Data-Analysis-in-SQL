@@ -1,0 +1,17 @@
+-- To clear table if it already exists
+DROP TABLE IF EXISTS indicators;
+
+-- Create the indicators temp table
+CREATE TEMP TABLE indicators AS
+  -- Select id
+  SELECT id, 
+         -- Create the email indicator (find @)
+         CAST (description LIKE '%@%' AS integer) AS email,
+         -- Create the phone indicator
+         CAST (description LIKE '%___-___-____%' AS integer) AS phone 
+    -- What table contains the data? 
+    FROM evanston311;
+
+-- Inspect the contents of the new temp table
+SELECT *
+  FROM indicators;
