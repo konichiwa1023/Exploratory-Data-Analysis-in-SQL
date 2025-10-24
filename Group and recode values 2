@@ -1,0 +1,23 @@
+-- Code from previous step
+DROP TABLE IF EXISTS recode;
+
+CREATE TEMP TABLE recode AS
+  SELECT DISTINCT category, 
+         rtrim(split_part(category, '-', 1)) AS standardized
+    FROM evanston311;
+
+-- Update to group trash cart values
+UPDATE recode 
+   SET standardized = 'Trash Cart' 
+ WHERE standardized LIKE 'Trash%Cart';
+
+-- Update to group snow removal values
+UPDATE recode 
+   SET standardized = 'Snow Removal' 
+ WHERE standardized IN ('Snow Removal/Concerns', 'Snow/Ice/Hazard Removal');
+    
+-- Examine effect of updates
+SELECT DISTINCT standardized 
+  FROM recode
+ WHERE standardized LIKE 'Trash%Cart'
+    OR standardized LIKE 'Snow%Removal%';
