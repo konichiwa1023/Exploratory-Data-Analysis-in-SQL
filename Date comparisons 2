@@ -1,0 +1,5 @@
+-- Count requests created on February 29, 2016
+SELECT count(*)
+  FROM evanston311 
+ WHERE date_created >= '2016-02-29'  
+    AND date_created < '2016-03-01';
