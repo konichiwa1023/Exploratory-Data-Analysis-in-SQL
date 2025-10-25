@@ -1,0 +1,10 @@
+-- Generate 6 month bins covering 2016-01-01 to 2018-06-30
+
+-- Create lower bounds of bins
+SELECT generate_series('2016-01-01',  -- First bin lower value
+                       '2018-01-01',  -- Last bin lower value
+                       '6 months'::interval) AS lower,
+-- Create upper bounds of bins
+       generate_series('2016-07-01',  -- First bin upper value
+                       '2018-07-01',  -- Last bin upper value (exclusive)
+                       '6 months'::interval) AS upper;
