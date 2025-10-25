@@ -1,0 +1,3 @@
+-- How old is the most recent request?
+SELECT now() - max(date_created)
+  FROM evanston311;
