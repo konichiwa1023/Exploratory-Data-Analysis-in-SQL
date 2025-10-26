@@ -1,0 +1,11 @@
+-- Count number of requests made per day
+SELECT day, count(date_created) AS count
+-- Use a daily series from 2016-01-01 to 2018-06-30 
+-- to include days with no requests
+    FROM (SELECT generate_series('2016-01-01',  -- series start date
+                               '2018-06-30',  -- series end date
+                               '1 day'::interval)::date AS day) AS daily_series
+       LEFT JOIN evanston311
+       -- match day from above (which is a date) to date_created
+       ON day = date_created::date
+ GROUP BY day;
