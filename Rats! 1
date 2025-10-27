@@ -1,0 +1,6 @@
+SELECT date_trunc('day', date_completed - date_created) AS completion_time,
+       count(*)
+  FROM evanston311
+ WHERE category = 'Rodents- Rats'
+ GROUP BY completion_time
+ ORDER BY completion_time;
