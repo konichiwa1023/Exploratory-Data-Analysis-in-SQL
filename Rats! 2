@@ -1,0 +1,11 @@
+SELECT category, 
+        AVG(date_completed - date_created) AS avg_completion_time
+  FROM evanston311
+-- Where completion time is less than the 95th percentile value
+  WHERE date_completed - date_created < 
+-- Compute the 95th percentile of completion time in a subquery
+         (SELECT percentile_disc(0.95) WITHIN GROUP (ORDER BY date_completed - date_created)
+            FROM evanston311)
+ GROUP BY category
+-- Order the results
+ ORDER BY avg_completion_time DESC;
